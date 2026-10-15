@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bladder"
+version = "1.0.0"
+description = "Pitch and depth dynamics of a fish with a swim bladder and pectoral fins"
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.24", "scipy>=1.10", "matplotlib>=3.7"]
+
+[tool.setuptools]
+packages = ["bladder"]
