@@ -1,0 +1,45 @@
+{
+  "table": {
+    "points": 1181,
+    "positive": 0,
+    "max_l1": -0.005370987228665462
+  },
+  "map": {
+    "0.3": {
+      "corner": {
+        "points": 784,
+        "positive": 80,
+        "kappa_max": 0.2937133633691727,
+        "rho_max": 5.481481481481481
+      },
+      "double": {
+        "points": 784,
+        "positive": 20,
+        "kappa_max": 0.018846716378431196,
+        "rho_max": 4.2592592592592595
+      }
+    },
+    "1.0": {
+      "corner": {
+        "points": 784,
+        "positive": 45,
+        "kappa_max": 0.04387494869099599,
+        "rho_max": 5.0740740740740735
+      },
+      "double": {
+        "points": 784,
+        "positive": 0
+      }
+    },
+    "3.0": {
+      "corner": {
+        "points": 784,
+        "positive": 0
+      },
+      "double": {
+        "points": 784,
+        "positive": 0
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 """LaTeX macros for every number quoted in the paper: paper/numbers.tex.
 
 Cheap quantities are recomputed; the rest are read from data/ written by
-symmetric_branches.py, corner.py and sweeps.py.
+symmetric_branches.py, corner.py, hopf_sign.py and sweeps.py.
 """
 import json
 
@@ -41,6 +41,15 @@ def collect():
         name = SPEED_NAMES[row["U"]]
         n["dSB" + name] = (row["d_sb"], 3)
         n["dAlpha" + name] = (row["d_alpha15"], 3)
+
+    branch = np.load(DATA / "branch_U2.npy")
+    d_sb = next(r["d_sb"] for r in sb["thresholds"] if r["U"] == 2.0)
+    n["alphaSBUtwenty"] = (np.degrees(np.interp(d_sb, branch[:, 0], branch[:, 4])), 2)
+
+    l1 = json.loads((DATA / "hopf_sign.json").read_text())["map"]
+    n["kappaCornerBetaLow"] = (l1["0.3"]["corner"]["kappa_max"], 2)
+    n["kappaDoubleBetaLow"] = (l1["0.3"]["double"]["kappa_max"], 2)
+    n["kappaCornerBetaOne"] = (l1["1.0"]["corner"]["kappa_max"], 2)
 
     n["Ufixcascade"] = (float(np.load(DATA / "sweep_d_up.npz")["fixed"]), 2)
     n["dfixU"] = (float(np.load(DATA / "sweep_U_down.npz")["fixed"]), 2)

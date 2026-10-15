@@ -43,6 +43,7 @@ paper/numbers.tex числа, приводимые в тексте статьи
 | `corner.py` | `corner.json`, `sb_corner.npy`, `nf_lines.npy` | 6 |
 | `sb_tr_lines.py` | `sb_line.npy`, `tr_line.npy` | 6 |
 | `regime_map.py` | `regime_map.npy` | 6 |
+| `hopf_sign.py` | `hopf_sign.json`, `l1_map.npz`: знак $l_1$ на $B=0$ | — |
 | `no_torus.py` | проверка ухода между $a_4=0$ и TR (вывод в консоль) | 6 |
 | `sweeps.py d_up` (и `d_down`, `d_zoom`, `U_down`, `U_up`) | `sweep_*.npz` | 7 |
 | `paper_numbers.py` | `paper/numbers.tex` | — |
@@ -59,5 +60,5 @@ python scripts/figures.py s06
 Все результаты уже лежат в `data/`, поэтому рисунки и `numbers.tex` можно получить без долгих расчётов.
 
 Классы режимов в `regime_map.npy` (третий столбец): 0 — равновесие, 1 — симметричный цикл,
-2 — несимметричный цикл, 3 — цикл кратного периода, 4 — режим не установился (у линии TR),
+2 — несимметричный цикл, 3 — цикл кратного периода, 4 — режим не установился,
 5 — хаотический аттрактор, 6 — нет аттрактора.
