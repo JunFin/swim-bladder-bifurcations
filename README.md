@@ -11,6 +11,8 @@ $$m\ddot z = F_A + F_L\cos\gamma,\qquad J\ddot\theta = r_A\cos\theta\,F_A + r_L 
 
 Параметры: $m = J = K = 1$, $k_b = 0{,}5$, $k_\theta = 5$, $r_A = -4{,}6$ м; $d = r_L - r_L(B=0)$.
 
+![Механизм пассивной стабилизации глубины](figures/mechanism.gif)
+
 ## Установка
 
 ```bash
@@ -19,7 +21,7 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-Для `figures.py movie` нужен ffmpeg.
+Для `figures.py movie` нужен ffmpeg; `figures.py gif` строит ту же анимацию в GIF.
 
 ## Состав
 

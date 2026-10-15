@@ -2,7 +2,8 @@
 
     python scripts/figures.py               # all figures
     python scripts/figures.py s06 s07a      # selected ones
-    python scripts/figures.py movie         # needs ffmpeg
+    python scripts/figures.py movie         # Supplementary Movie 1, needs ffmpeg
+    python scripts/figures.py gif           # the same animation as a GIF
 """
 import sys
 
@@ -26,8 +27,8 @@ C1, C2 = "#2a78d6", "#eb6834"
 GOOD, BAD = "#0072B2", "#E69F00"
 SB_COLOR, TR_COLOR = "#123f7a", "#0b5a3b"
 MAP_COLORS = ["#f2f1ec", "#0072B2", "#56B4E9", "#E69F00", "#F0E442", "#CC79A7", "#8a8983"]
-MAP_LABELS = ["равновесие", "симметричный цикл", "несимметричный цикл", "цикл кратного периода",
-              "не установилось", "хаотический аттрактор", "нет аттрактора"]
+MAP_LABELS = ["equilibrium", "symmetric cycle", "asymmetric cycle", "multi-period cycle",
+              "not settled", "chaotic attractor", "no attractor"]
 
 
 def style():
@@ -43,8 +44,8 @@ def style():
     })
 
 
-def comma(ax):
-    f = matplotlib.ticker.FuncFormatter(lambda v, _: ("%g" % v).replace(".", ",").replace("-", "−"))
+def plain_ticks(ax):
+    f = matplotlib.ticker.FuncFormatter(lambda v, _: ("%g" % v).replace("-", "−"))
     ax.xaxis.set_major_formatter(f)
     ax.yaxis.set_major_formatter(f)
 
@@ -188,8 +189,8 @@ def s01():
     save(fig, "s01_mechanism")
 
 
-def movie(path=None, fps=30, T=26.0, play=9.0, dpi=200):
-    from matplotlib.animation import FFMpegWriter, FuncAnimation
+def animation(path, writer, fps, dpi, T=26.0, play=9.0):
+    from matplotlib.animation import FuncAnimation
     sol = mechanism_solution(T)
     kx = 0.7
     t = np.linspace(0, T, 1600)
@@ -214,10 +215,20 @@ def movie(path=None, fps=30, T=26.0, play=9.0, dpi=200):
         draw_fish(ax, kx * tk, KZ * zk, PITCH_GAIN * thk, bladder_volume(zk, thk))
 
     frames = list(range(n)) + [n - 1] * int(fps * 1.5)
+    FuncAnimation(fig, frame, frames=frames).save(path, writer=writer)
+    plt.close(fig)
+
+
+def movie(fps=30):
+    from matplotlib.animation import FFMpegWriter
     writer = FFMpegWriter(fps=fps, codec="libx264", bitrate=2500,
                           extra_args=["-pix_fmt", "yuv420p", "-movflags", "+faststart"])
-    FuncAnimation(fig, frame, frames=frames).save(path or FIGURES / "supplementary_movie_1.mp4", writer=writer)
-    plt.close(fig)
+    animation(FIGURES / "supplementary_movie_1.mp4", writer, fps, dpi=200)
+
+
+def gif(fps=20):
+    from matplotlib.animation import PillowWriter
+    animation(FIGURES / "mechanism.gif", PillowWriter(fps=fps), fps, dpi=100)
 
 
 def s03():
@@ -234,15 +245,15 @@ def s03():
     ax.plot(ra[ok], rl4[ok], color=C1, lw=1.8)
     ax.set_xlim(-9, -0.3)
     ax.set_ylim(-9, -0.05)
-    ax.set_xlabel("плечо пузыря $r_A$, м")
-    ax.set_ylabel("плечо плавников $r_L$, м")
+    ax.set_xlabel("Bladder arm $r_A$ (m)")
+    ax.set_ylabel("Fin arm $r_L$ (m)")
     ax.grid(False)
-    fig.legend(handles=[Patch(fc="#cde4f5", label="равновесие устойчиво"),
-                        Patch(fc="#f6e3cc", label="равновесие неустойчиво"),
-                        Line2D([], [], color=C1, lw=1.8, label="$a_4=0$: свободный член характеристического многочлена"),
-                        Line2D([], [], color=C2, lw=1.8, label=r"$B=0$: старший минор Гурвица $\Delta_3$")],
+    fig.legend(handles=[Patch(fc="#cde4f5", label="stable equilibrium"),
+                        Patch(fc="#f6e3cc", label="unstable equilibrium"),
+                        Line2D([], [], color=C1, lw=1.8, label="$a_4=0$: constant term of the characteristic polynomial"),
+                        Line2D([], [], color=C2, lw=1.8, label=r"$B=0$: highest Hurwitz minor $\Delta_3$")],
                loc="lower center", ncol=1, handlelength=1.6)
-    comma(ax)
+    plain_ticks(ax)
     fig.tight_layout(rect=(0, 0.24, 1, 1))
     save(fig, "s03_wedge")
 
@@ -257,17 +268,17 @@ def s04a():
     Us = np.linspace(1.3, 2.4, 600)
     th = np.array([theta_star(u, RA, rL) or np.nan for u in Us]) * DEG
     fig, ax = plt.subplots(figsize=(0.49 * TW, 0.6 * TW))
-    ax.plot([u1, 2.4], [0, 0], color="k", lw=2.0, label=r"$\theta=0$ устойчиво")
-    ax.plot([1.3, u1], [0, 0], color="k", lw=1.4, ls="--", label=r"$\theta=0$ неустойчиво")
-    ax.plot(Us, th, color=C1, lw=1.5, ls="--", label=r"сёдла $\pm\theta^*$")
+    ax.plot([u1, 2.4], [0, 0], color="k", lw=2.0, label=r"$\theta=0$ stable")
+    ax.plot([1.3, u1], [0, 0], color="k", lw=1.4, ls="--", label=r"$\theta=0$ unstable")
+    ax.plot(Us, th, color=C1, lw=1.5, ls="--", label=r"saddles $\pm\theta^*$")
     ax.plot(Us, -th, color=C1, lw=1.5, ls="--")
     ax.set_xlim(1.3, 2.4)
     ax.set_ylim(-60, 60)
-    ax.set_xlabel("скорость $U$, м с$^{-1}$")
-    ax.set_ylabel("равновесный тангаж, град")
+    ax.set_xlabel("Speed $U$ (m s$^{-1}$)")
+    ax.set_ylabel("Equilibrium pitch (deg)")
     fig.legend(*ax.get_legend_handles_labels(), loc="lower center", ncol=1, handlelength=1.8)
     panel_label(ax, "a")
-    comma(ax)
+    plain_ticks(ax)
     fig.tight_layout(rect=(0, 0.25, 1, 1))
     save(fig, "s04a_pitchfork")
 
@@ -287,14 +298,14 @@ def s04b():
     ax.axhline(xs[0], color=INK2, ls=":", lw=1.0)
     ax.set_xlim(0, 200)
     ax.set_ylim(-3, 0.6)
-    ax.set_xlabel("время $t$, с")
-    ax.set_ylabel("глубина $z$, м")
-    fig.legend(handles=[Line2D([], [], color=GOOD, label="$s<1$: возврат"),
-                        Line2D([], [], color=BAD, label="$s>1$: выход из окрестности"),
-                        Line2D([], [], color=INK2, ls=":", label="глубина седла $z^*$")],
+    ax.set_xlabel("Time $t$ (s)")
+    ax.set_ylabel("Depth $z$ (m)")
+    fig.legend(handles=[Line2D([], [], color=GOOD, label="$s<1$: return"),
+                        Line2D([], [], color=BAD, label="$s>1$: escape"),
+                        Line2D([], [], color=INK2, ls=":", label="saddle depth $z^*$")],
                loc="lower center")
     panel_label(ax, "b")
-    comma(ax)
+    plain_ticks(ax)
     fig.tight_layout(rect=(0, 0.25, 1, 1))
     save(fig, "s04b_basin")
 
@@ -304,17 +315,17 @@ def s05():
     d, A, h = br[:, 0], br[:, 2] * DEG, br[:, 5]
     k = int(np.argmax(h >= 1)) if (h >= 1).any() else len(d)
     fig, ax = plt.subplots(figsize=(0.8 * TW, 0.52 * TW))
-    ax.plot([-0.15, 0], [0, 0], color="k", lw=2.0, label="равновесие устойчиво")
-    ax.plot([0, 1.2], [0, 0], color="k", lw=1.4, ls="--", label="равновесие неустойчиво")
-    ax.plot(np.r_[0, d[:k]], np.r_[0, A[:k]], color=C1, lw=2.0, label="предельный цикл устойчив")
-    ax.plot(d[k - 1:], A[k - 1:], color=C1, lw=1.4, ls="--", label="предельный цикл неустойчив")
+    ax.plot([-0.15, 0], [0, 0], color="k", lw=2.0, label="stable equilibrium")
+    ax.plot([0, 1.2], [0, 0], color="k", lw=1.4, ls="--", label="unstable equilibrium")
+    ax.plot(np.r_[0, d[:k]], np.r_[0, A[:k]], color=C1, lw=2.0, label="stable limit cycle")
+    ax.plot(d[k - 1:], A[k - 1:], color=C1, lw=1.4, ls="--", label="unstable limit cycle")
     ax.set_xlim(-0.15, 1.2)
     ax.set_ylim(-2, 65)
-    ax.set_xlabel("сдвиг плавников $d$, м")
-    ax.set_ylabel(r"амплитуда $\theta$, град")
+    ax.set_xlabel("Fin shift $d$ (m)")
+    ax.set_ylabel(r"$\theta$ amplitude (deg)")
     fig.legend(*ax.get_legend_handles_labels(), loc="lower center", ncol=2, columnspacing=1.0,
                handlelength=1.6)
-    comma(ax)
+    plain_ticks(ax)
     fig.tight_layout(rect=(0.01, 0.2, 0.99, 0.99))
     save(fig, "s05_hopf")
 
@@ -364,21 +375,21 @@ def s06():
     ax.plot(U0, 0, "*", ms=11, color="#eda100", mec=INK, mew=0.8, zorder=8)
     ax.set_xlim(WINDOW[0], WINDOW[1])
     ax.set_ylim(WINDOW[2], WINDOW[3])
-    ax.set_xlabel("скорость $U$, м с$^{-1}$")
-    ax.set_ylabel("сдвиг плавников $d$, м")
+    ax.set_xlabel("Speed $U$ (m s$^{-1}$)")
+    ax.set_ylabel("Fin shift $d$ (m)")
     ax.grid(False)
-    comma(ax)
+    plain_ticks(ax)
 
     dashed = (0, (2.5, 1.5))
     handles = [Patch(fc=c, label=l) for c, l in zip(MAP_COLORS, MAP_LABELS)] + [
         Line2D([], [], color=INK, lw=1.8, label="$a_4=0$"),
         Line2D([], [], color=INK, lw=1.0, ls=(0, (1, 1.2)), label="$B=0$"),
-        Line2D([], [], color=SB_COLOR, lw=1.6, label="SB (численно)"),
-        Line2D([], [], color=TR_COLOR, lw=1.6, label="TR (численно)"),
-        Line2D([], [], color=SB_COLOR, lw=0.9, ls=dashed, label="SB (нормальная форма)"),
-        Line2D([], [], color=TR_COLOR, lw=0.9, ls=dashed, label="TR (нормальная форма)"),
+        Line2D([], [], color=SB_COLOR, lw=1.6, label="SB (numerical)"),
+        Line2D([], [], color=TR_COLOR, lw=1.6, label="TR (numerical)"),
+        Line2D([], [], color=SB_COLOR, lw=0.9, ls=dashed, label="SB (normal form)"),
+        Line2D([], [], color=TR_COLOR, lw=0.9, ls=dashed, label="TR (normal form)"),
         Line2D([], [], ls="none", marker="*", ms=9, color="#eda100", mec=INK, mew=0.7,
-               label="точка Хопф-вилки")]
+               label="Hopf–pitchfork point")]
     fig.legend(handles=handles, loc="center left", bbox_to_anchor=(0.645, 0.55), fontsize=9.5,
                handlelength=1.6, labelspacing=0.45)
     save(fig, "s06_diagram")
@@ -395,11 +406,11 @@ def s07():
         ax.plot(s.y[2] * DEG, s.y[3] * DEG, color=C1, lw=0.35)
         if i > 0:
             ax.plot(-s.y[2] * DEG, -s.y[3] * DEG, color=C2, lw=0.35)
-        ax.set_xlabel(r"$\theta$, град")
+        ax.set_xlabel(r"$\theta$ (deg)")
         ax.text(0.03, 0.97, "abcde"[i], transform=ax.transAxes, va="top", fontsize=10.5, weight="bold")
-        comma(ax)
+        plain_ticks(ax)
         x = s.y[:, -1]
-    axs[0].set_ylabel(r"$\dot\theta$, град/с")
+    axs[0].set_ylabel(r"$\dot\theta$ (deg s$^{-1}$)")
     fig.tight_layout(w_pad=0.6)
     save(fig, "s07_attractors")
 
@@ -414,15 +425,15 @@ def sweep_figure(name, job, xlim, xlabel, labels, mark_escape=False):
             a1.axvspan(u - 0.001, u + 0.001, color="#bdbdbd", lw=0, zorder=0.5)
     a1.scatter(pmax[:, 0], pmax[:, 1] * DEG, s=0.5, c=C1, alpha=0.8, lw=0, rasterized=True)
     a1.scatter(pmin[:, 0], -pmin[:, 1] * DEG, s=0.5, c=C1, alpha=0.8, lw=0, rasterized=True)
-    a1.set_ylabel(r"$\theta_{\max}$, град")
+    a1.set_ylabel(r"$\theta_{\max}$ (deg)")
     ok = np.isfinite(rows[:, 7])
     a2.plot(rows[ok, 0], rows[ok, 7], color="#2b2b29", lw=0.8)
     a2.axhline(0, color=INK2, lw=0.6)
-    a2.set_ylabel(r"$\lambda_1$, с$^{-1}$")
+    a2.set_ylabel(r"$\lambda_1$ (s$^{-1}$)")
     a2.set_xlabel(xlabel)
     a2.set_xlim(*xlim)
     for ax, lab in zip((a1, a2), labels):
-        comma(ax)
+        plain_ticks(ax)
         ax.text(-0.3, 1.0, lab, transform=ax.transAxes, fontsize=11, weight="bold", va="bottom")
     fig.align_ylabels((a1, a2))
     fig.tight_layout(h_pad=0.4)
@@ -430,11 +441,11 @@ def sweep_figure(name, job, xlim, xlabel, labels, mark_escape=False):
 
 
 def s07a():
-    sweep_figure("s07a_sweep_d", "d_up", (0, 0.4), "сдвиг плавников $d$, м", ("a", "c"))
+    sweep_figure("s07a_sweep_d", "d_up", (0, 0.4), "Fin shift $d$ (m)", ("a", "c"))
 
 
 def s07b():
-    sweep_figure("s07b_sweep_U", "U_down", (1.5, 2.6), "скорость $U$, м с$^{-1}$", ("b", "d"),
+    sweep_figure("s07b_sweep_U", "U_down", (1.5, 2.6), "Speed $U$ (m s$^{-1}$)", ("b", "d"),
                  mark_escape=True)
 
 

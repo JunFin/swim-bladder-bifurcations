@@ -15,7 +15,7 @@ SPEED_NAMES = {1.6: "Usixteen", 1.7: "Useventeen", 2.0: "Utwenty"}
 
 
 def fmt(v, digits):
-    return f"{v:.{digits}g}".replace(".", "{,}")
+    return f"{v:.{digits}g}"
 
 
 def collect():
