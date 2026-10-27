@@ -231,31 +231,55 @@ def gif(fps=20):
     animation(FIGURES / "mechanism.gif", PillowWriter(fps=fps), fps, dpi=100)
 
 
-def s03():
-    U, n = 2.0, 320
-    rAs = np.linspace(-9, -0.3, n)
-    rLs = np.linspace(-9, -0.05, n)
-    stable = np.array([[max_real_eig(U, a, b) < 0 for a in rAs] for b in rLs], float)
-    fig, ax = plt.subplots(figsize=(0.8 * TW, 0.66 * TW))
-    ax.contourf(rAs, rLs, stable, levels=[-0.5, 0.5, 1.5], colors=["#f6e3cc", "#cde4f5"])
-    ra = np.linspace(-9, -0.3, 500)
-    ax.plot(ra, [rL_on_B0(r) for r in ra], color=C2, lw=1.8)
-    rl4 = ra + P.kth / (P.K * U**2)
-    ok = rl4 < -0.05
-    ax.plot(ra[ok], rl4[ok], color=C1, lw=1.8)
-    ax.set_xlim(-9, -0.3)
-    ax.set_ylim(-9, -0.05)
-    ax.set_xlabel("Bladder arm $r_A$ (m)")
-    ax.set_ylabel("Fin arm $r_L$ (m)")
+WEDGE_LABELS = dict(
+    x="Bladder offset $r_A/\\ell$", y="Lift-centre offset $r_L/\\ell$",
+    stable="stable equilibrium", unstable="unstable equilibrium",
+    a4="$a_4=0$, shaded speed", a4_fast="$a_4=0$, higher speeds",
+    B="$B=0$",
+)
+
+# (kappa, beta, shading speed, faster speeds, r_A range, r_L range); speed in units of sqrt(k_theta/m)
+WEDGE_PANELS = (
+    (0.1, 1.0, 2 / np.sqrt(5), (1.5, 3.0), (-9.0, -0.3), (-9.0, -0.05)),
+    (0.002, 1.0, 2.0, (4.0, 10.0), (-1.1, 0.02), (-1.1, 0.05)),
+)
+
+
+def wedge_panel(ax, kappa, beta, U, faster, xr, yr, n=300):
+    from bladder import Params
+    p = Params(K=beta, kb=kappa, kth=1.0)
+    rA, rL = np.linspace(*xr, n), np.linspace(*yr, n)
+    stable = np.array([[max_real_eig(U, a, b, p) < 0 for a in rA] for b in rL], float)
+    ax.contourf(rA, rL, stable, levels=[-0.5, 0.5, 1.5], colors=["#f6e3cc", "#cde4f5"])
+    ra = np.linspace(*xr, 600)
+    ax.plot(ra, [rL_on_B0(r, p) for r in ra], color=C2, lw=1.8)
+    for u, ls, lw in [(U, "-", 1.8)] + [(v, (0, (4, 2)), 1.1) for v in faster]:
+        line = ra + p.kth / (p.K * u**2)
+        ok = line < yr[1]
+        ax.plot(ra[ok], line[ok], color=C1, lw=lw, ls=ls)
+    ax.set_xlim(*xr)
+    ax.set_ylim(*yr)
     ax.grid(False)
-    fig.legend(handles=[Patch(fc="#cde4f5", label="stable equilibrium"),
-                        Patch(fc="#f6e3cc", label="unstable equilibrium"),
-                        Line2D([], [], color=C1, lw=1.8, label="$a_4=0$: constant term of the characteristic polynomial"),
-                        Line2D([], [], color=C2, lw=1.8, label=r"$B=0$: highest Hurwitz minor $\Delta_3$")],
-               loc="lower center", ncol=1, handlelength=1.6)
     plain_ticks(ax)
-    fig.tight_layout(rect=(0, 0.24, 1, 1))
-    save(fig, "s03_wedge")
+
+
+def s03(labels=WEDGE_LABELS, name="s03_wedge"):
+    fig = plt.figure(figsize=(TW, 0.6 * TW))
+    gs = fig.add_gridspec(1, 2, wspace=0.3, left=0.1, right=0.98, top=0.94, bottom=0.36)
+    axs = [fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[0, 1])]
+    for ax, args in zip(axs, WEDGE_PANELS):
+        wedge_panel(ax, *args)
+        ax.set_xlabel(labels["x"])
+    axs[0].set_ylabel(labels["y"])
+    for ax, lab in zip(axs, "ab"):
+        panel_label(ax, lab)
+    handles = [Patch(fc="#cde4f5", label=labels["stable"]), Patch(fc="#f6e3cc", label=labels["unstable"]),
+               Line2D([], [], color=C1, lw=1.8, label=labels["a4"]),
+               Line2D([], [], color=C1, lw=1.1, ls=(0, (4, 2)), label=labels["a4_fast"]),
+               Line2D([], [], color=C2, lw=1.8, label=labels["B"])]
+    fig.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.06, 0.0), ncol=2, handlelength=1.8,
+               columnspacing=1.5, fontsize=9)
+    save(fig, name)
 
 
 def panel_label(ax, text, x=-0.06, y=1.05):

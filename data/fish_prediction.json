@@ -1,0 +1,22 @@
+{
+ "n_cases": 48,
+ "below_never_stable": 48,
+ "above_stable": 48,
+ "depth_shift_max": 0.01903677487951483,
+ "depths": [
+  0.0,
+  1.0,
+  10.0,
+  100.0
+ ],
+ "approx_err_max": 5.189214888567939e-06,
+ "order": [
+  "Atherina presbyter",
+  "Gasterosteus aculeatus",
+  "Carassius auratus",
+  "Dermogenys pusilla",
+  "Poecilia latipinna",
+  "Trigonostigma heteromorpha"
+ ],
+ "n_orders": 1
+}

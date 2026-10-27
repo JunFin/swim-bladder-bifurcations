@@ -1,0 +1,14 @@
+common name	Species	pectoral_start /BL	caudal_start /BL
+sand smelt	Atherina presbyter	0.23	0.85
+goldfish	Carassius auratus	0.21	0.71
+blue-green chromis	Chromis viridis	0.25	0.78
+wrestling halfbeak	Dermogenys pusilla	0.31	0.86
+giant danio	Devario aequipinnatus	0.17	0.81
+eyespot puffer	Dichotomyctere ocellatus	0.33	0.82
+three-spine stickleback	Gasterosteus aculeatus	0.26	0.89
+rummy-nose tetra	Hemigrammus rhodostomus	0.20	0.85
+glass catfish	Kryptopterus vitreolus	0.14	0.83
+frog-faced cichlid 	Lamprologus ocellatus	0.30	0.87
+sailfin molly	Poecilia latipinna	0.27	0.79
+threestripe gourami	Trichopsis schalleri	0.23	0.79
+harlequin rasbora	Trigonostigma heteromorpha	0.18	0.77

@@ -1,0 +1,42 @@
+{
+ "reference U=0.5": {
+  "stable": 0,
+  "with_forward_arm": 0
+ },
+ "reference U=1.0": {
+  "stable": 0,
+  "with_forward_arm": 0
+ },
+ "reference U=2.0": {
+  "stable": 1540,
+  "with_forward_arm": 0
+ },
+ "reference U=5.0": {
+  "stable": 5244,
+  "with_forward_arm": 0
+ },
+ "reference U=10.0": {
+  "stable": 5933,
+  "with_forward_arm": 0
+ },
+ "fish U=0.5": {
+  "stable": 1569,
+  "with_forward_arm": 0
+ },
+ "fish U=1.0": {
+  "stable": 5411,
+  "with_forward_arm": 0
+ },
+ "fish U=2.0": {
+  "stable": 6726,
+  "with_forward_arm": 0
+ },
+ "fish U=5.0": {
+  "stable": 7140,
+  "with_forward_arm": 0
+ },
+ "fish U=10.0": {
+  "stable": 7140,
+  "with_forward_arm": 0
+ }
+}
