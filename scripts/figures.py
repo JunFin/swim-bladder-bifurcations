@@ -27,7 +27,7 @@ C1, C2 = "#2a78d6", "#eb6834"
 GOOD, BAD = "#0072B2", "#E69F00"
 SB_COLOR, TR_COLOR = "#123f7a", "#0b5a3b"
 MAP_COLORS = ["#f2f1ec", "#0072B2", "#56B4E9", "#E69F00", "#F0E442", "#CC79A7", "#8a8983"]
-MAP_LABELS = ["equilibrium", "symmetric cycle", "asymmetric cycle", "multi-period cycle",
+MAP_LABELS = ["equilibrium", "symmetric cycle", "asymmetric cycle", "higher-period cycle",
               "not settled", "chaotic attractor", "no attractor"]
 
 
@@ -217,6 +217,51 @@ def animation(path, writer, fps, dpi, T=26.0, play=9.0):
     frames = list(range(n)) + [n - 1] * int(fps * 1.5)
     FuncAnimation(fig, frame, frames=frames).save(path, writer=writer)
     plt.close(fig)
+
+
+def animation_fixed(path, writer, fps, dpi, T=26.0, play=9.0):
+    """Same solution as `animation`, seen from a frame moving with the fish: only depth and pitch change,
+    the flow streaks show the forward speed."""
+    from matplotlib.animation import FuncAnimation
+    sol = mechanism_solution(T)
+    kx = 0.7
+    W, y0, y1 = 5.0, -1.75, 1.15
+    rng = np.random.default_rng(3)
+    sx = rng.uniform(-W, W, 40)
+    sy = rng.uniform(y0 + 0.1, y1 - 0.1, 40)
+    fig, ax = plt.subplots(figsize=(6.0, 3.5), dpi=dpi)
+    fig.subplots_adjust(0, 0, 1, 1)
+    n = int(fps * play)
+
+    def frame(i):
+        ax.clear()
+        ax.set_axis_off()
+        ax.set_aspect("equal")
+        ax.set_xlim(-W / 2, W / 2)
+        ax.set_ylim(y0, y1)
+        tk = min(T, T * i / (n - 1))
+        x = (sx - kx * tk + W) % (2 * W) - W
+        for xi, yi in zip(x, sy):
+            ax.plot([xi, xi + 0.25], [yi, yi], color="#d5dae0", lw=1.0, zorder=0)
+        ax.plot([-W, W], [0, 0], color=INK2, lw=0.9, ls=(0, (4, 3)), zorder=0.5)
+        zk, _, thk, _ = sol(tk)
+        draw_fish(ax, 0.0, KZ * zk, PITCH_GAIN * thk, bladder_volume(zk, thk))
+
+    frames = list(range(n)) + [n - 1] * int(fps * 1.5)
+    FuncAnimation(fig, frame, frames=frames).save(path, writer=writer)
+    plt.close(fig)
+
+
+def movie_fixed(fps=30):
+    from matplotlib.animation import FFMpegWriter
+    writer = FFMpegWriter(fps=fps, codec="libx264", bitrate=2500,
+                          extra_args=["-pix_fmt", "yuv420p", "-movflags", "+faststart"])
+    animation_fixed(FIGURES / "mechanism_fixed.mp4", writer, fps, dpi=200)
+
+
+def gif_fixed(fps=20):
+    from matplotlib.animation import PillowWriter
+    animation_fixed(FIGURES / "mechanism_fixed.gif", PillowWriter(fps=fps), fps, dpi=100)
 
 
 def movie(fps=30):

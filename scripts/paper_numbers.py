@@ -92,6 +92,8 @@ def collect():
                                for s in speeds), 1)
     n["fishEscOut"] = (max(min(r["d_over_W_pct"] for r in runs if r["U_over_U0"] == s and escaped(r))
                            for s in speeds), 1)
+    n["fishEscAll"] = (max(min(r["d_over_W_pct"] for r in runs if r["U_over_U0"] == s
+                               and all(x["escaped"] for x in r["runs"])) for s in speeds), 1)
     times = [x["t"] for r in runs for x in r["runs"] if x["escaped"]]
     n["fishEscTmin"], n["fishEscTmax"] = (min(times), 1), (max(times), 1)
     n["fishEscT"] = (runs[0]["T"], 1)
