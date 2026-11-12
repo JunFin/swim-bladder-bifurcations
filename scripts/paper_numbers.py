@@ -107,20 +107,24 @@ def fish_table():
     """Rows of Table 2 in the order of the predicted threshold speed: species, bladder offset, h, kappa,
     rho_A, U0/TL at beta = 1 and over beta = 0.1-2.6."""
     sp = json.loads((DATA / "fish_parameters.json").read_text())["species"]
-    dx = {}
+    dx, TL = {}, {}
     for line in (DATA / "disanto2025" / "hovering_morphology.txt").read_text().strip().splitlines()[1:]:
         c = line.split("\t")
         dx[c[0].strip()] = -100 * float(c[1])
+        TL[c[0].strip()] = float(c[5])  # total length, cm
+    sig = lambda v: fmt(v, 3 if v >= 100 else 2)
+    cms = lambda name, lo, hi: f"{sig(lo * TL[name])}--{sig(hi * TL[name])}"
     r = lambda lo, hi, d: f"{fmt(lo, d)}--{fmt(hi, d)}"
     rho = lambda v: fmt(v, 3 if abs(v) >= 1 else 2)
     rows = []
     for name, v in sorted(sp.items(), key=lambda kv: kv[1]["U0_TL_beta1"][0]):
-        rows.append(f"\\emph{{{name}}} & {fmt(dx[name], 2)} & {v['h_mm']:.2f} & {r(*v['kappa'], 2)} & "
-                    f"${rho(v['rho_A'][0])}$ to ${rho(v['rho_A'][1])}$ & "
-                    f"{r(*v['U0_TL_beta1'], 2)} & {r(*v['U0_TL_beta01'], 2)} \\\\")
-    head = ("\\begin{tabular}{lcccccc}\n\\toprule\n"
-            "Species & $\\Delta x/L$ (\\%) & $h$ (mm) & $\\kappa$ & $\\rho_A$ & "
-            "$U_0/L$ ($\\beta=1$, s$^{-1}$) & $U_0/L$ ($\\beta=0.1$, s$^{-1}$) \\\\\n"
+        rows.append(f"\\emph{{{name}}} & {fmt(TL[name], 2)} & {fmt(dx[name], 2)} & {v['h_mm']:.2f} & "
+                    f"{r(*v['kappa'], 2)} & ${rho(v['rho_A'][0])}$ to ${rho(v['rho_A'][1])}$ & "
+                    f"{r(*v['U0_TL_beta1'], 2)} ({cms(name, *v['U0_TL_beta1'])}) & "
+                    f"{r(*v['U0_TL_beta01'], 2)} ({cms(name, *v['U0_TL_beta01'])}) \\\\")
+    head = ("\\begin{tabular}{lccccccc}\n\\toprule\n"
+            "Species & $L$ (cm) & $\\Delta x/L$ (\\%) & $h$ (mm) & $\\kappa$ & $\\rho_A$ & "
+            "$U_0/L$, s$^{-1}$ (cm s$^{-1}$), $\\beta=1$ & $U_0/L$, s$^{-1}$ (cm s$^{-1}$), $\\beta=0.1$ \\\\\n"
             "\\midrule\n")
     return head + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n"
 
