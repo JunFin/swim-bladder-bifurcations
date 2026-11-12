@@ -1,0 +1,824 @@
+{
+ "goldfish_rbar_L": 0.0934,
+ "goldfish_zebra_deg_per_m": 2.8209693718940714,
+ "zebrafish_anterior_share": 0.9722222222222222,
+ "zebrafish_rbar_TL": 0.09083333333333336,
+ "zebrafish_h_mm_for_0.9deg_per_m_P0": 0.7994770057833391,
+ "zebrafish_deg_per_m_h0.6_0.8mm_P0": [
+  1.1992155086750087,
+  0.8994116315062564
+ ],
+ "zebrafish_h_mm_for_0.9deg_per_m_1m": 0.7289063536329404,
+ "zebrafish_deg_per_m_h0.6_0.8mm_1m": [
+  1.0933595304494106,
+  0.8200196478370578
+ ],
+ "boyle_slope_pct_per_cm_P0": 0.09681717246484085,
+ "U0_Lps": 1.8005651964955416,
+ "rL_fig5_L": -0.052782147475662455,
+ "lambda_formula_max_rel_err": 0.005250521086494375,
+ "kb_sigma2_over_kth_equal": 0.0003750520629977054,
+ "depth_change": [
+  {
+   "beta": 1.0,
+   "U_over_U0": 1.5,
+   "pos": 0.25,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": 542.7199626758884,
+    "front": 100.2184088187404,
+    "incompressible": 360.925425449567,
+    "zebrafish": 112.407400996396
+   },
+   "hold_deg": {
+    "rear": -0.587611018696339,
+    "front": 7.894416034985287,
+    "incompressible": 0.0,
+    "zebrafish": 6.474111546267856
+   }
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 1.5,
+   "pos": 0.25,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 213.4215733868645,
+    "front": 73.25669425550076,
+    "incompressible": 180.49775762776042,
+    "zebrafish": 80.63228366123207
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 1.5,
+   "pos": 0.25,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 76.63278482010107,
+    "front": 43.242426021733245,
+    "incompressible": 72.15386004861256,
+    "zebrafish": 46.23170637113619
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 1.5,
+   "pos": 0.5,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 104.80320273080623,
+    "incompressible": 360.8964942147623,
+    "zebrafish": 118.5062958655925
+   },
+   "hold_deg": {
+    "rear": -1.1753214769010454,
+    "front": 7.3058867434885855,
+    "incompressible": 0.0,
+    "zebrafish": 5.886093396537244
+   }
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 1.5,
+   "pos": 0.5,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 271.35739192285376,
+    "front": 76.05253247847884,
+    "incompressible": 180.46881097512997,
+    "zebrafish": 84.20427057968286
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 1.5,
+   "pos": 0.5,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 82.0904447351392,
+    "front": 44.38272394985869,
+    "incompressible": 72.1248045967886,
+    "zebrafish": 47.59452515611653
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 1.5,
+   "pos": 0.75,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 109.93705606141779,
+    "incompressible": 360.86756327812697,
+    "zebrafish": 125.48013481701932
+   },
+   "hold_deg": {
+    "rear": -1.7631313998577691,
+    "front": 6.717457072418724,
+    "incompressible": 0.0,
+    "zebrafish": 5.29814148662653
+   }
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 1.5,
+   "pos": 0.75,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 432.4586013261693,
+    "front": 79.13617774128019,
+    "incompressible": 180.4398655137029,
+    "zebrafish": 88.20522738972332
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 1.5,
+   "pos": 0.75,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 88.76922184481887,
+    "front": 45.60927641729298,
+    "incompressible": 72.09575652517337,
+    "zebrafish": 49.07177546282842
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 2.0,
+   "pos": 0.25,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": 536.1797840544078,
+    "front": 76.64243675686211,
+    "incompressible": 270.7854386726273,
+    "zebrafish": 86.13800630126748
+   },
+   "hold_deg": {
+    "rear": -0.7932044097114854,
+    "front": 7.689330678588983,
+    "incompressible": 0.0,
+    "zebrafish": 6.2688279473924595
+   }
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 2.0,
+   "pos": 0.25,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 172.26256091924876,
+    "front": 55.91418222015109,
+    "incompressible": 135.46473845707746,
+    "zebrafish": 61.62135372341353
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 2.0,
+   "pos": 0.25,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 58.90975615186538,
+    "front": 32.92159733471248,
+    "incompressible": 54.207172403795425,
+    "zebrafish": 35.206243465798195
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 2.0,
+   "pos": 0.5,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 81.48924897760615,
+    "incompressible": 270.73336161271214,
+    "zebrafish": 92.68538520833887
+   },
+   "hold_deg": {
+    "rear": -1.5865900210958295,
+    "front": 6.8947924935204785,
+    "incompressible": 0.0,
+    "zebrafish": 5.474987754846684
+   }
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 2.0,
+   "pos": 0.5,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 267.94784623543933,
+    "front": 58.829068876012784,
+    "incompressible": 135.41263113831525,
+    "zebrafish": 65.39646043175843
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 2.0,
+   "pos": 0.5,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 65.01868806877754,
+    "front": 34.071366051510275,
+    "incompressible": 54.15485190997982,
+    "zebrafish": 36.59800248063298
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 2.0,
+   "pos": 0.75,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 87.19457886074252,
+    "incompressible": 270.68128531528333,
+    "zebrafish": 100.63734108138368
+   },
+   "hold_deg": {
+    "rear": -2.380156896251778,
+    "front": 6.100435877462387,
+    "incompressible": 0.0,
+    "zebrafish": 4.681268289139649
+   }
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 2.0,
+   "pos": 0.75,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 62.1873537726244,
+    "incompressible": 135.36052686470507,
+    "zebrafish": 69.84492095237536
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 2.0,
+   "pos": 0.75,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 73.32226176201752,
+    "front": 35.35160800202841,
+    "incompressible": 54.10255023950841,
+    "zebrafish": 38.16412538508441
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 3.0,
+   "pos": 0.25,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": 536.770962452059,
+    "front": 52.2207714998934,
+    "incompressible": 180.69766461102225,
+    "zebrafish": 58.70689774583097
+   },
+   "hold_deg": {
+    "rear": -0.940034470939215,
+    "front": 7.542818814452658,
+    "incompressible": 0.0,
+    "zebrafish": 6.122181936053201
+   }
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 3.0,
+   "pos": 0.25,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 121.84871174316628,
+    "front": 38.0781225021025,
+    "incompressible": 90.48396551019454,
+    "zebrafish": 41.95045936682493
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 3.0,
+   "pos": 0.25,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 40.092891122471,
+    "front": 22.43390413962057,
+    "incompressible": 36.312966769443534,
+    "zebrafish": 23.96252483147469
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 3.0,
+   "pos": 0.5,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 56.052935019546204,
+    "incompressible": 180.60508239053684,
+    "zebrafish": 63.99401213493913
+   },
+   "hold_deg": {
+    "rear": -1.880323442416396,
+    "front": 6.601123915428747,
+    "incompressible": 0.0,
+    "zebrafish": 5.181321017999809
+   }
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 3.0,
+   "pos": 0.5,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 267.7979775029626,
+    "front": 40.33048392260029,
+    "incompressible": 90.39132715638955,
+    "zebrafish": 44.93304140137285
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 3.0,
+   "pos": 0.5,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 45.25732674491406,
+    "front": 23.261585087316778,
+    "incompressible": 36.21993314421129,
+    "zebrafish": 24.99482730213436
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 3.0,
+   "pos": 0.75,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 60.78018354697008,
+    "incompressible": 180.51250091808015,
+    "zebrafish": 70.77506398517998
+   },
+   "hold_deg": {
+    "rear": -2.8208670177989417,
+    "front": 5.65968407065908,
+    "incompressible": 0.0,
+    "zebrafish": 4.240629685362716
+   }
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 3.0,
+   "pos": 0.75,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 43.042135075993,
+    "incompressible": 90.29869179233789,
+    "zebrafish": 48.62215981076699
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 1.0,
+   "U_over_U0": 3.0,
+   "pos": 0.75,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 53.00429397591999,
+    "front": 24.225162480234292,
+    "incompressible": 36.12691810449104,
+    "zebrafish": 26.209239625506974
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 1.5,
+   "pos": 0.25,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": 171.68650383054145,
+    "front": 33.26468173962339,
+    "incompressible": 114.64631569425673,
+    "zebrafish": 37.04155646894888
+   },
+   "hold_deg": {
+    "rear": -0.5876110186963973,
+    "front": 7.894416034985496,
+    "incompressible": 0.0,
+    "zebrafish": 6.474111546267839
+   }
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 1.5,
+   "pos": 0.25,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 67.82647245960908,
+    "front": 24.452559880407865,
+    "incompressible": 57.59040741135717,
+    "zebrafish": 26.71452710158551
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 1.5,
+   "pos": 0.25,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 24.686091833708517,
+    "front": 14.650041187138793,
+    "incompressible": 23.331382567119142,
+    "zebrafish": 15.540752915514984
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 1.5,
+   "pos": 0.5,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 34.44510766203867,
+    "incompressible": 114.55482545823496,
+    "zebrafish": 38.70534541642095
+   },
+   "hold_deg": {
+    "rear": -1.1753214769009994,
+    "front": 7.30588674348825,
+    "incompressible": 0.0,
+    "zebrafish": 5.886093396537147
+   }
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 1.5,
+   "pos": 0.5,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 85.86401221319576,
+    "front": 25.114009756519213,
+    "incompressible": 57.49886351700692,
+    "zebrafish": 27.62634394626628
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 1.5,
+   "pos": 0.5,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 26.277939314090563,
+    "front": 14.841517268518785,
+    "incompressible": 23.23946082409855,
+    "zebrafish": 15.807317400248767
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 1.5,
+   "pos": 0.75,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 35.802633495007626,
+    "incompressible": 114.4633355075241,
+    "zebrafish": 40.65142084841406
+   },
+   "hold_deg": {
+    "rear": -1.7631313998576739,
+    "front": 6.7174570724186955,
+    "incompressible": 0.0,
+    "zebrafish": 5.298141486626655
+   }
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 1.5,
+   "pos": 0.75,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 136.37398520579023,
+    "front": 25.87016182515421,
+    "incompressible": 57.40732076197259,
+    "zebrafish": 28.679328003185535
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 1.5,
+   "pos": 0.75,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 28.270717462561628,
+    "front": 15.063331776439778,
+    "incompressible": 23.14754296644679,
+    "zebrafish": 16.114426463197475
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 2.0,
+   "pos": 0.25,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": 169.1904832294909,
+    "front": 26.145994871855375,
+    "incompressible": 86.27367688719637,
+    "zebrafish": 29.059832095934
+   },
+   "hold_deg": {
+    "rear": -0.7932044097114545,
+    "front": 7.689330678588972,
+    "incompressible": 0.0,
+    "zebrafish": 6.268827947392551
+   }
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 2.0,
+   "pos": 0.25,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 54.798485519807464,
+    "front": 19.240568513033516,
+    "incompressible": 43.48191818630772,
+    "zebrafish": 20.964535223755682
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 2.0,
+   "pos": 0.25,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 19.170665514905178,
+    "front": 11.588641428913666,
+    "incompressible": 17.788864709636822,
+    "zebrafish": 12.24948660429076
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 2.0,
+   "pos": 0.5,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 27.224817962457855,
+    "incompressible": 86.10899303365326,
+    "zebrafish": 30.68194228174133
+   },
+   "hold_deg": {
+    "rear": -1.586590021095853,
+    "front": 6.894792493520548,
+    "incompressible": 0.0,
+    "zebrafish": 5.474987754846885
+   }
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 2.0,
+   "pos": 0.5,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 84.45254083031574,
+    "front": 19.788700589773832,
+    "incompressible": 43.31713345505209,
+    "zebrafish": 21.79119840658075
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 2.0,
+   "pos": 0.5,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 20.87453050460774,
+    "front": 11.670354968857572,
+    "incompressible": 17.623369531648873,
+    "zebrafish": 12.414058563017992
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 2.0,
+   "pos": 0.75,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 28.577477157345697,
+    "incompressible": 85.94431020283486,
+    "zebrafish": 32.757238123363
+   },
+   "hold_deg": {
+    "rear": -2.3801568962516213,
+    "front": 6.1004358774623,
+    "incompressible": 0.0,
+    "zebrafish": 4.6812682891396085
+   }
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 2.0,
+   "pos": 0.75,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 20.48076148980821,
+    "incompressible": 43.15235282076756,
+    "zebrafish": 22.84015456139085
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 2.0,
+   "pos": 0.75,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 23.31352639936107,
+    "front": 11.796264216598026,
+    "incompressible": 17.45790023663756,
+    "zebrafish": 12.640639997779578
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 3.0,
+   "pos": 0.25,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": 168.06366054606397,
+    "front": 19.052674162700555,
+    "incompressible": 58.066153977473675,
+    "zebrafish": 21.008483910949213
+   },
+   "hold_deg": {
+    "rear": -0.940034470939234,
+    "front": 7.5428188144534625,
+    "incompressible": 0.0,
+    "zebrafish": 6.122181936053077
+   }
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 3.0,
+   "pos": 0.25,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 38.88618805617462,
+    "front": 14.107384390018169,
+    "incompressible": 29.538665224192687,
+    "zebrafish": 15.243883316245723
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 3.0,
+   "pos": 0.25,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 13.437665127189245,
+    "front": 8.645101034100318,
+    "incompressible": 12.412425573250076,
+    "zebrafish": 9.063184116384287
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 3.0,
+   "pos": 0.5,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 19.55961802047625,
+    "incompressible": 57.773378646681905,
+    "zebrafish": 21.973841899640043
+   },
+   "hold_deg": {
+    "rear": -1.8803234424164272,
+    "front": 6.6011239154287775,
+    "incompressible": 0.0,
+    "zebrafish": 5.181321017999766
+   }
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 3.0,
+   "pos": 0.5,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": 83.48459339082859,
+    "front": 14.242467655546731,
+    "incompressible": 29.245698443722272,
+    "zebrafish": 15.611525959205936
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 3.0,
+   "pos": 0.5,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 14.681155476075963,
+    "front": 8.476354058405727,
+    "incompressible": 12.118115611572751,
+    "zebrafish": 8.962212665134157
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 3.0,
+   "pos": 0.75,
+   "step_deg": -1.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 20.323727349774877,
+    "incompressible": 57.480605666630694,
+    "zebrafish": 23.40277790307895
+   },
+   "hold_deg": {
+    "rear": -2.820867017798897,
+    "front": 5.6596840706592175,
+    "incompressible": 0.0,
+    "zebrafish": 4.240629685362727
+   }
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 3.0,
+   "pos": 0.75,
+   "step_deg": -2.0,
+   "t1m": {
+    "rear": Infinity,
+    "front": 14.504505481778901,
+    "incompressible": 28.952741068818465,
+    "zebrafish": 16.19862646003641
+   },
+   "hold_deg": null
+  },
+  {
+   "beta": 0.1,
+   "U_over_U0": 3.0,
+   "pos": 0.75,
+   "step_deg": -5.0,
+   "t1m": {
+    "rear": 16.836280482220417,
+    "front": 8.335476804186959,
+    "incompressible": 11.823859760566645,
+    "zebrafish": 8.913533119293929
+   },
+   "hold_deg": null
+  }
+ ],
+ "fastest_counts": {
+  "rear": 0,
+  "front": 54,
+  "incompressible": 0,
+  "zebrafish": 0
+ },
+ "zebrafish_before_rear_and_incompressible": 54,
+ "front_before_rear_and_incompressible": 54,
+ "n_cases": 54
+}
