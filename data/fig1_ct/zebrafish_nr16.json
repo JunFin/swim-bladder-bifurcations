@@ -1,0 +1,32 @@
+{
+ "source": "Hur et al. 2017, eLife 6:e26014; Zenodo doi:10.5281/zenodo.5011917 (CC0 1.0)",
+ "file": "bmp1a + +_sa2416_455_nr16.DCM",
+ "voxel_mm": 0.021,
+ "body_x_mm": [
+  0.882,
+  29.022000000000002
+ ],
+ "bladder_volume_mm3": 16.89,
+ "bladder_fraction_percent": 5.46,
+ "bladder_x_mm": [
+  7.7700000000000005,
+  15.498000000000001
+ ],
+ "cm_mm": [
+  11.854508905814484,
+  3.2492064970423526
+ ],
+ "cb_mm": [
+  11.983675498354753,
+  3.3402775290057054
+ ],
+ "bladder_centroid_mm": [
+  11.83903672541915,
+  4.402056623472333
+ ],
+ "pelvic_fin_x_mm": [
+  11.97,
+  15.225000000000001
+ ],
+ "note": "x from the scan origin near the snout, y dorsal -> ventral; CM from density 1 + HU/1000 (rough)"
+}
